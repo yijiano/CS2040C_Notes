@@ -6,8 +6,8 @@
 [Steven Halim GitHub](https://github.com/stevenhalim)
 
 # Content
-[[01_intro|Introduction]]
-[[02_vla_adt|Variable Length Array & Advanced Data Types]]
+[[01_intro|Introduction & OOP]]
+[[02_vla_adt|Variable Length Array & Abstract Data Types]]
 [[03_searching|Searching]]
 [[04_sorting|Sorting]]
 [[05_trees_bst_avl_augtrees|Trees (BST, AVL, Augmentation)]]

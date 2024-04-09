@@ -91,6 +91,8 @@ the output will be:
 
 # OOP
 #oop
+- Child is subclass
+- Parent is superclass
 - In procedural languages (like C), the data (struct) and process (functions) are **separate** entities
 - However in OOP, there is encapsulation
 	- Data + Function abstraction
@@ -104,7 +106,8 @@ the output will be:
 	- stores some common storages
 		- common -> every instance has one own copy
 		- not every instance shares the same copy
-
+- Virtual functions: #virtual
+	- A virtual function (also known as virtual methods) is a member function that is declared within a base class and is re-defined (overridden) by a derived class.
 > [!info] Naming Convention in C++
 > #convention
 > Class names are usually in *camel case*
