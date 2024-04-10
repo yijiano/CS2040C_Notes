@@ -16,7 +16,7 @@
 [[07_heap|Heap]]
 [[08_ufds|Union-Find Disjoint Sets]]
 [[09_graphs_dfs_bfs_dag|Graphs (DFS, BFS, DAG)]]
-[[10_sssp_bf|Single-Source Shortest Path]]
+[[10_sssp_bf|Single-Source Shortest Path (Bellman-Ford)]]
 [[11_dijkstras|Dijkstra's Algorithm]]
 [[12_topological_sort_connected_components|Topological Sort & Connected Components]]
 [[13_graphs_drawing_mst_bsp|Graphs (Drawing, MST, BSP)]]
