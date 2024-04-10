@@ -1,5 +1,15 @@
+#dijkstra #sssp #shortest_path 
+
 [[_main|<-- Back to main]]
 
+# Basic Idea
+- Initialise:
+	- Put all vertices into a priority queue
+	- Set all priorities to estimated distances as infinity
+	- Set the starting vertex estimated distance as 0
+- Repeat until the priority queue is empty
+	- Extract the vertex v in the priority queue with the shortest estimated distance
+	- Relax all the neighbours of v in the priority queue and update their estimated distance
 # Implementation
 ```cpp
 #include "graph.h"
