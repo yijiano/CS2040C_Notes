@@ -1,6 +1,6 @@
 [[_main|<-- Back to main]]
 # Terminology
-#graphs #nodes #edges
+#graphs #nodes #edges #diagraphs
 **Graph G = <V, E>**
 
 **V** is a set of nodes:
@@ -9,16 +9,23 @@
 **E** is a set of edges:
 - E $\subseteq$ { (v, w): (v $\in$ V), (w $\in$ V) } 
 - **Not reflexive (no self-loops):** e = (v ,w), for v $\neq$ w
+	- Order matters for #directed_graphs
 - **Only one edge for each pair of nodes:** For all $e_1$, $e_2$ $\subseteq$ E : $e_1 \neq e_2$
 
 Connected
-- Every pair of nodes is a connected by a path
+- Every pair of nodes is a connected by a path, only one components
+
+Disconnected:
+- Some pair of nodes is not connected by a path, multiple connected components
 
 Degree of a **node**:
 - Number of **adjacent** edges
 
 Degree of a **graph**:
 - Maximum number of **adjacent** edges
+- #directed_graphs 
+	- In-degree: number of incoming edges
+	- Out-degree: number of outgoing edges
 
 Diameter:
 - Maximum distance between two nodes, following the **shortest** path
@@ -36,7 +43,8 @@ Special Graphs:
 
 Graph consists of:
 - Nodes: stored in an **array**
-- Edges: **linked list** per nod
+- Edges: **linked list** per node
+	- only **out-going edges** for #directed_graphs
 
 Key questions to ask:
 - Space usage: is graph dense or sparse?
@@ -107,4 +115,100 @@ class Graph {
 }
 ```
 
+# Graph Search
+#graphs #graph_search
+## BFS (Queue)
+#bfs #queue
+- Add start node to queue
+- Repeat until queue is empty
+	- Remove node v from the front of the queue.
+	- Visit v.
+	- Explore all outgoing edges of v.
+	- Add all unvisited neighbours of v to the queue.
+
+## DFS (Stack)
+#dfs #stack
+- Add start node to stack
+- Repeat until stack is empty
+	- Pop node v from the front of the stack.
+	- Visit v.
+	- Explore all outgoing edges of v.
+	- Push all unvisited neighbours of v on the top of the stack.
+
 # Breadth-First Search
+#bfs
+## Characteristics
+- Explore level by level
+- **Frontier:** current level
+- Initially: {s}
+- Advance **frontier**, never backtrack
+	- For #directed_graph follow outgoing, ignore incoming
+- Calculate level (i) from level (i - 1)
+- Skip already visited nodes
+- BFS fails to visit every node in a disconnected graph (more than one component)
+
+```cpp
+// O(V + E) runtime
+BFS(Node[] nodeList, int startId) {
+	bool visited[numNode] = {0};
+	int parent[numNode];
+	for (int i = 0; i < numNode; i++) { // no parent yet
+		parent[i] = -1; 
+	}
+	
+	for (int start = 0; start < numNode; start++) {
+		// to account for disconnected graphs
+		if (!visited[start]) {
+			Set<int> frontier = new Set<int>;
+			frontier.insert(startId);
+			visited[startId] = true;
+			
+			// main code
+			while (!frontier.isEmpty()) {
+				Set<int> nextFrontier = new Set<int>;
+				while (!frontier.isEmpty()) {
+					>>extract a vertex v from fontier<<
+				for (w = every neighbour of v) {
+						if (!visited[w]) {
+							visited [w] = true;
+							parent[w] = v;
+							nextFrontier.add(w);
+						}
+					}
+				}
+				frontier = nextFrontier;
+			}	
+		}
+	}
+}
+```
+# Depth-First Search
+#dfs
+## Characteristics
+- Follow path until stuck
+	- For #directed_graphs follow outgoing edges
+- Backtrack until reach unexplored neighbour
+	- For #directed_graphs backtrack through incoming edges
+- Recursively explore
+
+```cpp
+DFS-visit (Node[] nodeList, boolean[] visited, int startId) { 
+	for every neighbor v of startId { 
+		if (!visited[v]){ 
+			visited[v] = true; 
+			DFS-visit(nodeList, visited, v); 
+		} 
+	} 
+}
+
+DFS (Node[] nodeList) {
+	boolean visited [numNode] = {0};
+	
+	for (start = 0; start<nodeList.length; start++) {
+		if (!visited[start]) {
+			visited[start] = true;
+			DFS-visit(nodeList, visited, start);
+		}
+	}
+}
+```
