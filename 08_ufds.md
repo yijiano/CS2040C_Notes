@@ -13,12 +13,15 @@ Quick-find is slow:
 - Find is fast
 - Union is expensive
 - Tree is flat
+
 Quick-union is slow:
 - Trees too tall (i.e., unbalanced)
 - Union ***and*** find are expensive
+
 Weighted-union is faster:
 - Trees too balanced: O(log n)
 - Union ***and*** find are O(log n)
+
 Weighed Union + Path Compression is very fast:
 - Trees very flat
 - On average, almost linear performance per operation.
@@ -126,6 +129,7 @@ graph TD;
     class 4 highlight;
 ```
 ## Weighted Union
+#weighted_union
 ```cpp
 // Determine which tree is more optimal
 // Maximum depth of tree is O(log n)
@@ -145,14 +149,18 @@ union(int p, int q) {
 ### Proof by induction (Tree Height for weighted union)
 Base Case: 
 - Tree of height
+
 Induction:
 - Tree of height $k$ is built from two trees of height $k-1$
 - A tree of height $k-1$ contains at least $2^(k-1)$ objects
 - Thus, a tree of height $k$ contains $2^k$ objects.
+
 Conclusion: 
 - Each tree is of height O(log n)
+
 Therefore, running time of both Find and Union is O(log n).
 ## Path Compression
+#path_compression #inverse_ackerman
 >[!THEOREM]
 >Starting from empty, any sequence of $m$ union/find operations on $n$ objects takes: $O(n + m \alpha (m,n))$ time, where a is the Inverse Ackerman function.
 >
