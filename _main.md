@@ -1,5 +1,6 @@
 #cs2040c 
 # Nice Links
+[Learn C++](https://www.learncpp.com/)
 [Intro to Algo Textbook](https://www.inf.ufpr.br/andre/textos-CI1165/Introduction%20to%20Algorithms%20-%203rd%20Edition.pdf)
 [VISUALGO](https://visualgo.net/en)
 [Competitive Programming Stuff](https://cpbooks.net)
