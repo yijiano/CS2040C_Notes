@@ -3,6 +3,8 @@
 [[_main|<-- Back to main]]
 
 # Basic Idea
+- **Assumptions**
+	- **No negative weights!**
 - Initialise:
 	- Put all vertices into a priority queue
 	- Set all priorities to estimated distances as infinity
@@ -10,6 +12,42 @@
 - Repeat until the priority queue is empty
 	- Extract the vertex v in the priority queue with the shortest estimated distance
 	- Relax all the neighbours of v in the priority queue and update their estimated distance
+
+# Priority Queue
+#priority_queue
+In this case, its a min heap
+```cpp
+void insert(Key k, Priority p);
+Data extractMin();
+void decreaseKey(Keyy k, Prioirity p);
+bool contains(Key k);
+bool isempty();
+```
+
+# Pseudo Code
+#dijkstra 
+```cpp
+// O(E log V)
+relax(Edge e) {
+	int v = e.from();
+	int w = e.to();
+	double weight = e.weight();
+	if (distTo[w] > distTo[v] + weight) {
+	distTo[w] = distTo[v] + weight;
+	parent[w] = v;
+	queue.decreaseKey(w, distTo[w])
+	}
+}
+```
+
+# Performance
+
+| PQ Implementation | insert | deleteMin | decreaseKey |     Total      |
+| :---------------: | :----: | :-------: | :---------: | :------------: |
+|       Array       |   1    |     V     |      1      |    O($V^2$)    |
+|     AVL Tree      | log V  |   log V   |    log V    |   O(E log V)   |
+|    d-way Heap     | dlogdV |  dlogdV   |    logdV    | O(Elog(E/V)V)  |
+|  Fibonacci Heap   |   1    |   log V   |      1      | O(E + V log V) |
 # Implementation
 ```cpp
 #include "graph.h"
