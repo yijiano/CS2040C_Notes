@@ -48,6 +48,27 @@ relax(Edge e) {
 |     AVL Tree      | log V  |   log V   |    log V    |   O(E log V)   |
 |    d-way Heap     | dlogdV |  dlogdV   |    logdV    | O(Elog(E/V)V)  |
 |  Fibonacci Heap   |   1    |   log V   |      1      | O(E + V log V) |
+
+# CS2040S Pseudo Code
+```java
+public Dijkstra {
+	private Graph G;
+	private IPriorityQueue pq = new PriQueue();
+	private double[] distTo;
+	
+	searchPath(int start) {
+		pq.insert(start, 0.0);
+		distTo = new double[G.size()];
+		Arrays.fill(distTo, INFTY); //init all dist to infinity
+		distTo[start] = 0;
+		while (!pq.isEmpty()) {
+			int w = pq.deleteMin();
+			for (Edge e : G[w].nbrList)
+				relax(e);
+		}
+	}
+}
+```
 # Implementation
 ```cpp
 #include "graph.h"
